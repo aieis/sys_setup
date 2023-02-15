@@ -6,6 +6,7 @@ sudo add-apt-repository -y ppa:git-core/ppa
 sudo apt update
 sudo apt install -y emacs28
 sudo apt install -y git
+sudo apt install -y ca-certificates
 
 git clone https://github.com/aieis/doom.d ~/.doom.d
 git clone https://github.com/doomemacs/doomemacs.git ~/.emacs.d
