@@ -8,10 +8,7 @@ sudo apt install -y emacs28
 sudo apt install -y git
 sudo apt install -y ca-certificates
 
-git clone https://github.com/aieis/doom.d ~/.doom.d
-git clone https://github.com/doomemacs/doomemacs.git ~/.emacs.d
-
-~/.emacs.d/bin/doom install --force
+git clone https://github.com/doomemacs/emacs-conf ~/.emacs.d
 
 echo "alias ec=\"emacsclient -n -c -a ''\"" >> ~/.bashrc
 echo "alias ecn=\"emacsclient -n -a ''\"" >> ~/.bashrc
