@@ -8,7 +8,7 @@ sudo apt install -y emacs28
 sudo apt install -y git
 sudo apt install -y ca-certificates
 
-git clone https://github.com/doomemacs/emacs-conf ~/.emacs.d
+git clone https://github.com/aieis/emacs-conf ~/.emacs.d
 
 echo "alias ec=\"emacsclient -n -c -a ''\"" >> ~/.bashrc
 echo "alias ecn=\"emacsclient -n -a ''\"" >> ~/.bashrc
