@@ -14,7 +14,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 echo "Set root password:"
 passwd
 
-pacman -S --needed git base-devel --noconfirm
+pacman -S --needed git base-devel zsh --noconfirm
 
 echo "Set user password:"
 useradd -m -G wheel aieis
@@ -31,6 +31,8 @@ cp -r config/. ~/.config
 cp -r local/. ~/.local
 cd home
 for f in ./*; do cp $f ~/.$f; done
+
+chsh -s /bin/zsh aieis
 
 #install yay
 cd ~/source
@@ -55,6 +57,3 @@ sh ./build
 pacman -S emacs ttc-iosevka git --noconfirm
 
 git clone https://github.com/aieis/emacs-conf /home/aieis/.emacs.d
-
-echo "alias ec=\"emacsclient -n -c -a ''\"" >> /home/aieis/.bashrc
-echo "alias ecn=\"emacsclient -n -a ''\"" >> /home/aieis/.bashrc
