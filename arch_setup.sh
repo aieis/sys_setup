@@ -1,25 +1,4 @@
-ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
-hwclock --systohc
-sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8' /etc/locale.gen
-locale-gen
-echo "LANG=en_US.UTF-8" > /etc/locale.conf
-echo "aieis" > /etc/hostname
-
-pacman -S grub efibootmgr networkmanager dhcpcd --noconfirm
-systemctl enable NetworkManager.service
-
-grub-install --target=x86_64-efi --efi-directory=/boot/grub --bootloader-id=GRUB_P --removable
-grub-mkconfig -o /boot/grub/grub.cfg
-
-echo "Set root password:"
-passwd
-
-pacman -S --needed git base-devel zsh --noconfirm
-
-echo "Set user password:"
-useradd -m -G wheel aieis
-passwd aieis
-su aieis
+sudo pacman -S --needed git base-devel zsh xorg-xinit xorg-server firefox libxft dmenu openssh --noconfirm
 
 echo "Setting up home"
 mkdir ~/source && cd ~/source
@@ -30,7 +9,7 @@ cd dotfiles
 cp -r config/. ~/.config
 cp -r local/. ~/.local
 cd home
-for f in ./*; do cp $f ~/.$f; done
+for f in *; do cp $f ~/.$f; done
 
 chsh -s /bin/zsh aieis
 
@@ -41,7 +20,7 @@ cd yay
 makepkg -si
 
 #install windows env
-sudo pacman -S noto-fonts-emoji --noconfirm
+sudo pacman -S noto-fonts-emoji ttf-bitstream-vera --noconfirm
 cd ~/source
 git clone https://github.com/aieis/dwm
 cd dwm
@@ -54,6 +33,6 @@ cd dwmblocks
 sh ./build
 
 #install emacs
-pacman -S emacs ttc-iosevka git --noconfirm
+pacman -S emacs ttc-iosevka --noconfirm
 
 git clone https://github.com/aieis/emacs-conf /home/aieis/.emacs.d
